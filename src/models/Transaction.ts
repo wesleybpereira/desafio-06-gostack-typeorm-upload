@@ -24,7 +24,7 @@ class Transaction {
   @Column('decimal')
   value: number;
 
-  @ManyToOne(() => Category) // Muitas transações para uma categoria
+  @ManyToOne(() => Category, category => category.transaction, { eager: true }) // Muitas transações para uma categoria
   @JoinColumn({ name: 'category_id' })
   category: Category;
 
